@@ -1,0 +1,199 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Documentation de Pok\u00e9lab\n\n\nPour davantage d'instructions sur le kit, visitez \npokelab.chez.com\n.\n\n\nManuel\n\n\nLe manuel couvre l'ensemble des fonctions de base de RPG Maker et du kit. Il englobe aussi bien les bases du making que la configuration ou la mise en place des syst\u00e8mes pr\u00e9vus par le kit.\n\n\nDocumentation\n\n\nLa documentation liste l'ensemble des fonctions de script disponibles dans Pok\u00e9lab et propose un aper\u00e7u de la structure du kit.",
+            "title": "Accueil"
+        },
+        {
+            "location": "/#documentation-de-pokelab",
+            "text": "Pour davantage d'instructions sur le kit, visitez  pokelab.chez.com .",
+            "title": "Documentation de Pok\u00e9lab"
+        },
+        {
+            "location": "/#manuel",
+            "text": "Le manuel couvre l'ensemble des fonctions de base de RPG Maker et du kit. Il englobe aussi bien les bases du making que la configuration ou la mise en place des syst\u00e8mes pr\u00e9vus par le kit.",
+            "title": "Manuel"
+        },
+        {
+            "location": "/#documentation",
+            "text": "La documentation liste l'ensemble des fonctions de script disponibles dans Pok\u00e9lab et propose un aper\u00e7u de la structure du kit.",
+            "title": "Documentation"
+        },
+        {
+            "location": "/manuel/",
+            "text": "Avant-propos\n\n\nLe manuel couvre l'ensemble des fonctions de base de RPG Maker et du kit. Il englobe aussi bien les bases du making que la configuration ou la mise en place des syst\u00e8mes pr\u00e9vus par le kit.",
+            "title": "Manuel"
+        },
+        {
+            "location": "/manuel/#avant-propos",
+            "text": "Le manuel couvre l'ensemble des fonctions de base de RPG Maker et du kit. Il englobe aussi bien les bases du making que la configuration ou la mise en place des syst\u00e8mes pr\u00e9vus par le kit.",
+            "title": "Avant-propos"
+        },
+        {
+            "location": "/docs/",
+            "text": "La documentation liste l'ensemble des fonctions de script disponibles dans Pok\u00e9lab et propose un aper\u00e7u de la structure du kit.\n\n\nCette documentation se veut exhaustive quant aux fonctions ajout\u00e9es par le kit, elle ne propose aucun cas pratique d'utilisation. Si vous cherchez \u00e0 utiliser un des syst\u00e8mes pr\u00e9sents, redirigez-vous vers le \nmanuel\n.\n\n\nLa documentation est articul\u00e9e autour de trois parties:\n\n\n\n\nUne partie orient\u00e9e sur la logique des scripts et des classes\n\n\nUne partie orient\u00e9e sur la structure des donn\u00e9es\n\n\nUne partie orient\u00e9e sur les m\u00e9thodes disponibles\n\n\n\n\nEn dehors de tout \u00e7a, le tout est pr\u00e9c\u00e9d\u00e9 d'un papier concernant les conventions de nommage et la philosophie du kit, que vous trouverez \npar ici\n.",
+            "title": "Avant-propos"
+        },
+        {
+            "location": "/docs/conventions/",
+            "text": "Nommage\n\n\nR\u00e8gle g\u00e9n\u00e9rale\n\n\nTous les noms de \nm\u00e9thodes\n et de \nclasses\n sont en anglais dans le kit dans un soucis de partage et d'accessibilit\u00e9. \n\n\nNotez qu'il est important qu'en cas de traduction du kit, aucune m\u00e9thode, classe ou variable ne doive \u00eatre renomm\u00e9e.\n\n\nLocalisation des symbol\n\n\nEn cas d'utilisation de \nsymbol\n, veillez \u00e0 garder un nom anglais: la localisation doit appara\u00eet sous forme de \nstring\n modifiable ind\u00e9pendament du code.\n\n\nFonctions du kit\n\n\nDans la \nclass Interpreter\n, les noms de m\u00e9thodes sont en anglais \u00e9galement: la localisation intervient sous forme d'\nalias_method\n, de la mani\u00e8re suivante:\n\n\ndef my_function\n    print \"Some text\"\nend\nalias_method :ma_fonction, :my_function\n\n\n\nAinsi, nous conservons la claret\u00e9 du code. \n\n\nPhilosophie\n\n\nUne approche purement objet\n\n\nNous tenons \u00e0 utiliser une approche orient\u00e9e objet. Pr\u00e9f\u00e8rez toujours l'h\u00e9ritage plut\u00f4t qu'une nouvelle d\u00e9finition ou et une classe qu'un syst\u00e8me de tableau ou d'array. C'est bien plus flexible et extensible pour quiconque souhaite ajouter des fonctionnalit\u00e9s au kit.\n\n\nDe la m\u00eame mani\u00e8re, utilisez les \nattr_accessor\n, \nattr_reader\n et \nattr_writer\n de mani\u00e8re quasiment syst\u00e9matique.\n\n\nExemple\n\n\n# Classe\n\ndef initialize()\n    @var = 0\nend\n\ndef get_var\n    @var\nend\n\ndef set_var(i)\n    @var = i\nend\n\n# Acc\u00e8s\n\nobjet.set_var(12)\n\n\n\nDevra \u00eatre remplac\u00e9 par\n\n\n# Classe\n\nattr_accessor :var\n\ndef initialize()\n    @var = 0\nend\n\n# Objet\n\nobjet.var = 12\n\n\n\nCe qui est bien plus pratique et plus efficace. Cependant, en cas de g\u00e9n\u00e9ration sur la valeur des variables, n'oubliez pas de remplacer \nattr_accessor\n par \nattr_reader\n et d'ajouter une m\u00e9thode pour d\u00e9finir la variable:\n\n\n# Classe\n\nattr_reader :var\n\ndef initialize()\n    @var = 0\nend\n\ndef set_var(i)\n    @var = i + 16\nend\n\n# Acc\u00e8s\n\nobjet.set_var(12)\nobjet.var # Renvoie 28\n\n\n\nUtilisation des Array\n\n\nNous banissons quasiment syst\u00e9matiquement l'utilisation des \narray\n pour des \nhash\n pour tout ce qui est acc\u00e8s aux donn\u00e9es. N'oubliez pas d'utiliser, sauf raison particuli\u00e8re, des \nsymbol\n \u00e0 la place des \nstring\n pour les cl\u00e9s des \nhash\n.",
+            "title": "Conventions"
+        },
+        {
+            "location": "/docs/conventions/#nommage",
+            "text": "",
+            "title": "Nommage"
+        },
+        {
+            "location": "/docs/conventions/#regle-generale",
+            "text": "Tous les noms de  m\u00e9thodes  et de  classes  sont en anglais dans le kit dans un soucis de partage et d'accessibilit\u00e9.   Notez qu'il est important qu'en cas de traduction du kit, aucune m\u00e9thode, classe ou variable ne doive \u00eatre renomm\u00e9e.",
+            "title": "R\u00e8gle g\u00e9n\u00e9rale"
+        },
+        {
+            "location": "/docs/conventions/#localisation-des-symbol",
+            "text": "En cas d'utilisation de  symbol , veillez \u00e0 garder un nom anglais: la localisation doit appara\u00eet sous forme de  string  modifiable ind\u00e9pendament du code.",
+            "title": "Localisation des symbol"
+        },
+        {
+            "location": "/docs/conventions/#fonctions-du-kit",
+            "text": "Dans la  class Interpreter , les noms de m\u00e9thodes sont en anglais \u00e9galement: la localisation intervient sous forme d' alias_method , de la mani\u00e8re suivante:  def my_function\n    print \"Some text\"\nend\nalias_method :ma_fonction, :my_function  Ainsi, nous conservons la claret\u00e9 du code.",
+            "title": "Fonctions du kit"
+        },
+        {
+            "location": "/docs/conventions/#philosophie",
+            "text": "",
+            "title": "Philosophie"
+        },
+        {
+            "location": "/docs/conventions/#une-approche-purement-objet",
+            "text": "Nous tenons \u00e0 utiliser une approche orient\u00e9e objet. Pr\u00e9f\u00e8rez toujours l'h\u00e9ritage plut\u00f4t qu'une nouvelle d\u00e9finition ou et une classe qu'un syst\u00e8me de tableau ou d'array. C'est bien plus flexible et extensible pour quiconque souhaite ajouter des fonctionnalit\u00e9s au kit.  De la m\u00eame mani\u00e8re, utilisez les  attr_accessor ,  attr_reader  et  attr_writer  de mani\u00e8re quasiment syst\u00e9matique.",
+            "title": "Une approche purement objet"
+        },
+        {
+            "location": "/docs/conventions/#exemple",
+            "text": "# Classe\n\ndef initialize()\n    @var = 0\nend\n\ndef get_var\n    @var\nend\n\ndef set_var(i)\n    @var = i\nend\n\n# Acc\u00e8s\n\nobjet.set_var(12)  Devra \u00eatre remplac\u00e9 par  # Classe\n\nattr_accessor :var\n\ndef initialize()\n    @var = 0\nend\n\n# Objet\n\nobjet.var = 12  Ce qui est bien plus pratique et plus efficace. Cependant, en cas de g\u00e9n\u00e9ration sur la valeur des variables, n'oubliez pas de remplacer  attr_accessor  par  attr_reader  et d'ajouter une m\u00e9thode pour d\u00e9finir la variable:  # Classe\n\nattr_reader :var\n\ndef initialize()\n    @var = 0\nend\n\ndef set_var(i)\n    @var = i + 16\nend\n\n# Acc\u00e8s\n\nobjet.set_var(12)\nobjet.var # Renvoie 28",
+            "title": "Exemple"
+        },
+        {
+            "location": "/docs/conventions/#utilisation-des-array",
+            "text": "Nous banissons quasiment syst\u00e9matiquement l'utilisation des  array  pour des  hash  pour tout ce qui est acc\u00e8s aux donn\u00e9es. N'oubliez pas d'utiliser, sauf raison particuli\u00e8re, des  symbol  \u00e0 la place des  string  pour les cl\u00e9s des  hash .",
+            "title": "Utilisation des Array"
+        },
+        {
+            "location": "/docs/console/",
+            "text": "Classe\n\n\nLa class Console est une classe d\u00e9di\u00e9e au Debug. Elle affiche une console au d\u00e9marrage du jeu. La classe sert \u00e9galement \u00e0 y afficher des informations de diff\u00e9rentes mani\u00e8res.\n\n\nUtilisation basique\n\n\nConsole.init\nConsole.log(\"Log\")\ne = 12\nConsole.var(\"e\", binding)\n\n\n\nPour l'usage, merci de vous r\u00e9f\u00e9rer au manuel.\n\n\nConstantes\n\n\nCHANGE_FONT\n\n\nSi \ntrue\n, tente de modifier la police de la console pour Lucida Console au d\u00e9marrage de celle-ci. Il est conseill\u00e9 de laisser \u00e0 true sauf si la commande ne fonctionne pas (cela peut arriver sur certaines versions de Windows, notamment d'anciennes versions).\n\n\nUSE_UNICODE\n\n\nSi \ntrue\n, active le support unicode de la console (encodage UTF-8). \n\n\n(Pour rappel, l'UTF-8 est obligatoire pour afficher des caract\u00e8res sp\u00e9ciaux, dont nos chers accents fran\u00e7ais.)\n\n\nNO_WARNINGS\n\n\nSi \ntrue\n, d\u00e9sactive l'affichage des warning et des log. D\u00e9conseill\u00e9 lors du d\u00e9veloppement.\n\n\nFORCE_DEBUG\n\n\nSi \ntrue\n, la console sera affich\u00e9e \u00e9galement si le jeu est lanc\u00e9 en dehors de l'\u00e9diteur.\n\n\nM\u00e9thodes\n\n\nself.color(c)\n\n\nModifie la couleur du texte et du fond.\n\n\nint\n c \u2192 code couleur (hexad\u00e9cimal)\n\n\n0x0000 # noir\n0x0001 # bleu fonc\u00e9\n0x0002 # vert fonc\u00e9\n0x0003 # cyan fonc\u00e9\n0x0004 # rouge fonc\u00e9\n0x0005 # rose fonc\u00e9\n0x0006 # jaune fonc\u00e9\n0x0007 # gris clair\n0x0008 # gris\n0x0009 # bleu\n0x000a # vert\n0x000b # cyan\n0x000c # rouge\n0x000d # rose\n0x000e # jaune\n0x000f # blanc\n\n\n\nself.debug(msg, line, custom_caller)\n\n\nAffiche un message de debug (coloration syntaxique).\n\n\nstring\n msg \u2192 message \u00e0 afficher\n\n\nbool\n line (\ntrue\n par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe le debug\n\n\ncaller\n custom_caller (\nnil\n par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne du debug si jamais le debug se situe dans une autre fonction (laisser \u00e0 nil pour automatique)\n\n\nself.debug_a(msg, line, custom_caller)\n\n\nAffiche un message de debug (coloration syntaxique).\nVersion ASCII. N'utiliser que dans des cas tr\u00e8s sp\u00e9cifiques.\n\n\nstring\n msg \u2192 message \u00e0 afficher\n\n\nbool\n line (\ntrue\n par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe le debug\n\n\ncaller\n custom_caller (\nnil\n par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne du debug si jamais le debug se situe dans une autre fonction (laisser \u00e0 nil pour automatique)\n\n\nself.debug_u(msg, line, custom_caller)\n\n\nAffiche un message de debug (coloration syntaxique).\nVersion Unicode. N'utiliser que dans des cas tr\u00e8s sp\u00e9cifiques.\n\n\nstring\n msg \u2192 message \u00e0 afficher\n\n\nbool\n line (\ntrue\n par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe le debug\n\n\ncaller\n custom_caller (\nnil\n par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne du debug si jamais le debug se situe dans une autre fonction (laisser \u00e0 nil pour automatique)\n\n\nself.done\n\n\nTermine l'action en cours.\n\n\nself.error(msg, line, custom_caller)\n\n\nAffiche une erreur.\n\n\nstring\n msg \u2192 message \u00e0 afficher\n\n\nbool\n line (\ntrue\n par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe l'erreur\n\n\ncaller\n custom_caller (\nnil\n par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne de l'erreur si jamais l'erreur se situe dans une autre fonction (laisser \u00e0 nil pour automatique)\n\n\ndef afficher_erreur\n    Console.error(\"ceci est une erreur\", true, caller.first.split(\":\"\"))\nend\n\nafficher_erreur() # C'est cette ligne qui sera affich\u00e9e gr\u00e2ce \u00e0 l'argument custom_caller.\n\n\n\nself.init\n\n\nInitialise la console. Il est fortement d\u00e9conseill\u00e9 de lancer plusieurs consoles.\nLa console doit \u00eatre lanc\u00e9e avant tout le reste.\n\n\nself.log(msg)\n\n\nAffiche un log. (console en mode test ou popup en mode jeu)\n\n\nstring\n msg \u2192 message \u00e0 afficher\n\n\nself.step(msg)\n\n\nAffiche une action en cours.\n\n\nstring\n msg \u2192 message \u00e0 afficher\n\n\nself.title(msg)\n\n\nAffiche un titre important.\n\n\nstring\n msg \u2192 message \u00e0 afficher\n\n\nself.unicode(msg)\n\n\nAffiche une cha\u00eene de caract\u00e8res unicode.\n\n\nstring\n msg \u2192 message \u00e0 afficher\n\n\nself.unicode_c(c)\n\n\nAffiche un caract\u00e8re unicode\n\n\nstring\n c \u2192 caract\u00e8re \u00e0 afficher\n\n\nself.var(v,b)\n\n\nAffiche les informations d'une variable.\n\n\nstring\n v \u2192 variable entre guillemets\n\nbinding\n b \u2192 contexte de la variable\n\n\ne = 12\n\nConsole.var(\"e\", binding) # Affiche le debug de la variable\n\n\n\nself.warning(msg, line, custom_caller)\n\n\nAffiche un avertissement.\n\n\nstring\n msg \u2192 message \u00e0 afficher\n\n\nbool\n line (\ntrue\n par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe l'avertissement\n\n\ncaller\n custom_caller (\nnil\n par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne de l'avertissement si jamais l'avertissement se situe dans une autre fonction (laisser \u00e0 nil pour automatique)\n\n\ndef afficher_avertissement\n    Console.warning(\"ceci est un avertissement\", true, caller.first.split(\":\"\"))\nend\n\nafficher_avertissement() # C'est cette ligne qui sera affich\u00e9e gr\u00e2ce \u00e0 l'argument custom_caller.",
+            "title": "Console"
+        },
+        {
+            "location": "/docs/console/#classe",
+            "text": "La class Console est une classe d\u00e9di\u00e9e au Debug. Elle affiche une console au d\u00e9marrage du jeu. La classe sert \u00e9galement \u00e0 y afficher des informations de diff\u00e9rentes mani\u00e8res.",
+            "title": "Classe"
+        },
+        {
+            "location": "/docs/console/#utilisation-basique",
+            "text": "Console.init\nConsole.log(\"Log\")\ne = 12\nConsole.var(\"e\", binding)  Pour l'usage, merci de vous r\u00e9f\u00e9rer au manuel.",
+            "title": "Utilisation basique"
+        },
+        {
+            "location": "/docs/console/#constantes",
+            "text": "",
+            "title": "Constantes"
+        },
+        {
+            "location": "/docs/console/#change_font",
+            "text": "Si  true , tente de modifier la police de la console pour Lucida Console au d\u00e9marrage de celle-ci. Il est conseill\u00e9 de laisser \u00e0 true sauf si la commande ne fonctionne pas (cela peut arriver sur certaines versions de Windows, notamment d'anciennes versions).",
+            "title": "CHANGE_FONT"
+        },
+        {
+            "location": "/docs/console/#use_unicode",
+            "text": "Si  true , active le support unicode de la console (encodage UTF-8).   (Pour rappel, l'UTF-8 est obligatoire pour afficher des caract\u00e8res sp\u00e9ciaux, dont nos chers accents fran\u00e7ais.)",
+            "title": "USE_UNICODE"
+        },
+        {
+            "location": "/docs/console/#no_warnings",
+            "text": "Si  true , d\u00e9sactive l'affichage des warning et des log. D\u00e9conseill\u00e9 lors du d\u00e9veloppement.",
+            "title": "NO_WARNINGS"
+        },
+        {
+            "location": "/docs/console/#force_debug",
+            "text": "Si  true , la console sera affich\u00e9e \u00e9galement si le jeu est lanc\u00e9 en dehors de l'\u00e9diteur.",
+            "title": "FORCE_DEBUG"
+        },
+        {
+            "location": "/docs/console/#methodes",
+            "text": "",
+            "title": "M\u00e9thodes"
+        },
+        {
+            "location": "/docs/console/#selfcolorc",
+            "text": "Modifie la couleur du texte et du fond.  int  c \u2192 code couleur (hexad\u00e9cimal)  0x0000 # noir\n0x0001 # bleu fonc\u00e9\n0x0002 # vert fonc\u00e9\n0x0003 # cyan fonc\u00e9\n0x0004 # rouge fonc\u00e9\n0x0005 # rose fonc\u00e9\n0x0006 # jaune fonc\u00e9\n0x0007 # gris clair\n0x0008 # gris\n0x0009 # bleu\n0x000a # vert\n0x000b # cyan\n0x000c # rouge\n0x000d # rose\n0x000e # jaune\n0x000f # blanc",
+            "title": "self.color(c)"
+        },
+        {
+            "location": "/docs/console/#selfdebugmsg-line-custom_caller",
+            "text": "Affiche un message de debug (coloration syntaxique).  string  msg \u2192 message \u00e0 afficher  bool  line ( true  par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe le debug  caller  custom_caller ( nil  par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne du debug si jamais le debug se situe dans une autre fonction (laisser \u00e0 nil pour automatique)",
+            "title": "self.debug(msg, line, custom_caller)"
+        },
+        {
+            "location": "/docs/console/#selfdebug_amsg-line-custom_caller",
+            "text": "Affiche un message de debug (coloration syntaxique).\nVersion ASCII. N'utiliser que dans des cas tr\u00e8s sp\u00e9cifiques.  string  msg \u2192 message \u00e0 afficher  bool  line ( true  par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe le debug  caller  custom_caller ( nil  par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne du debug si jamais le debug se situe dans une autre fonction (laisser \u00e0 nil pour automatique)",
+            "title": "self.debug_a(msg, line, custom_caller)"
+        },
+        {
+            "location": "/docs/console/#selfdebug_umsg-line-custom_caller",
+            "text": "Affiche un message de debug (coloration syntaxique).\nVersion Unicode. N'utiliser que dans des cas tr\u00e8s sp\u00e9cifiques.  string  msg \u2192 message \u00e0 afficher  bool  line ( true  par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe le debug  caller  custom_caller ( nil  par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne du debug si jamais le debug se situe dans une autre fonction (laisser \u00e0 nil pour automatique)",
+            "title": "self.debug_u(msg, line, custom_caller)"
+        },
+        {
+            "location": "/docs/console/#selfdone",
+            "text": "Termine l'action en cours.",
+            "title": "self.done"
+        },
+        {
+            "location": "/docs/console/#selferrormsg-line-custom_caller",
+            "text": "Affiche une erreur.  string  msg \u2192 message \u00e0 afficher  bool  line ( true  par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe l'erreur  caller  custom_caller ( nil  par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne de l'erreur si jamais l'erreur se situe dans une autre fonction (laisser \u00e0 nil pour automatique)  def afficher_erreur\n    Console.error(\"ceci est une erreur\", true, caller.first.split(\":\"\"))\nend\n\nafficher_erreur() # C'est cette ligne qui sera affich\u00e9e gr\u00e2ce \u00e0 l'argument custom_caller.",
+            "title": "self.error(msg, line, custom_caller)"
+        },
+        {
+            "location": "/docs/console/#selfinit",
+            "text": "Initialise la console. Il est fortement d\u00e9conseill\u00e9 de lancer plusieurs consoles.\nLa console doit \u00eatre lanc\u00e9e avant tout le reste.",
+            "title": "self.init"
+        },
+        {
+            "location": "/docs/console/#selflogmsg",
+            "text": "Affiche un log. (console en mode test ou popup en mode jeu)  string  msg \u2192 message \u00e0 afficher",
+            "title": "self.log(msg)"
+        },
+        {
+            "location": "/docs/console/#selfstepmsg",
+            "text": "Affiche une action en cours.  string  msg \u2192 message \u00e0 afficher",
+            "title": "self.step(msg)"
+        },
+        {
+            "location": "/docs/console/#selftitlemsg",
+            "text": "Affiche un titre important.  string  msg \u2192 message \u00e0 afficher",
+            "title": "self.title(msg)"
+        },
+        {
+            "location": "/docs/console/#selfunicodemsg",
+            "text": "Affiche une cha\u00eene de caract\u00e8res unicode.  string  msg \u2192 message \u00e0 afficher",
+            "title": "self.unicode(msg)"
+        },
+        {
+            "location": "/docs/console/#selfunicode_cc",
+            "text": "Affiche un caract\u00e8re unicode  string  c \u2192 caract\u00e8re \u00e0 afficher",
+            "title": "self.unicode_c(c)"
+        },
+        {
+            "location": "/docs/console/#selfvarvb",
+            "text": "Affiche les informations d'une variable.  string  v \u2192 variable entre guillemets binding  b \u2192 contexte de la variable  e = 12\n\nConsole.var(\"e\", binding) # Affiche le debug de la variable",
+            "title": "self.var(v,b)"
+        },
+        {
+            "location": "/docs/console/#selfwarningmsg-line-custom_caller",
+            "text": "Affiche un avertissement.  string  msg \u2192 message \u00e0 afficher  bool  line ( true  par d\u00e9faut) \u2192 affiche la ligne o\u00f9 se situe l'avertissement  caller  custom_caller ( nil  par d\u00e9faut) \u2192 caller sp\u00e9cifique pour la ligne de l'avertissement si jamais l'avertissement se situe dans une autre fonction (laisser \u00e0 nil pour automatique)  def afficher_avertissement\n    Console.warning(\"ceci est un avertissement\", true, caller.first.split(\":\"\"))\nend\n\nafficher_avertissement() # C'est cette ligne qui sera affich\u00e9e gr\u00e2ce \u00e0 l'argument custom_caller.",
+            "title": "self.warning(msg, line, custom_caller)"
+        }
+    ]
+}

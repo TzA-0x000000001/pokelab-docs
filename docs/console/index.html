@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Console - Pokélab Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Console";
+    var mkdocs_page_input_path = "docs\console.md";
+    var mkdocs_page_url = "/docs/console/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Pokélab Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Accueil</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../manuel/">Manuel</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Documentation</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../">Avant-propos</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../conventions/">Conventions</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Console</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#classe">Classe</a></li>
+                
+                    <li><a class="toctree-l4" href="#utilisation-basique">Utilisation basique</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#constantes">Constantes</a></li>
+                
+                    <li><a class="toctree-l4" href="#change_font">CHANGE_FONT</a></li>
+                
+                    <li><a class="toctree-l4" href="#use_unicode">USE_UNICODE</a></li>
+                
+                    <li><a class="toctree-l4" href="#no_warnings">NO_WARNINGS</a></li>
+                
+                    <li><a class="toctree-l4" href="#force_debug">FORCE_DEBUG</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#methodes">Méthodes</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfcolorc">self.color(c)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfdebugmsg-line-custom_caller">self.debug(msg, line, custom_caller)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfdebug_amsg-line-custom_caller">self.debug_a(msg, line, custom_caller)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfdebug_umsg-line-custom_caller">self.debug_u(msg, line, custom_caller)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfdone">self.done</a></li>
+                
+                    <li><a class="toctree-l4" href="#selferrormsg-line-custom_caller">self.error(msg, line, custom_caller)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfinit">self.init</a></li>
+                
+                    <li><a class="toctree-l4" href="#selflogmsg">self.log(msg)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfstepmsg">self.step(msg)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selftitlemsg">self.title(msg)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfunicodemsg">self.unicode(msg)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfunicode_cc">self.unicode_c(c)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfvarvb">self.var(v,b)</a></li>
+                
+                    <li><a class="toctree-l4" href="#selfwarningmsg-line-custom_caller">self.warning(msg, line, custom_caller)</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Pokélab Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Documentation &raquo;</li>
+        
+      
+    
+    <li>Console</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="classe">Classe</h1>
+<p>La class Console est une classe dédiée au Debug. Elle affiche une console au démarrage du jeu. La classe sert également à y afficher des informations de différentes manières.</p>
+<h3 id="utilisation-basique">Utilisation basique</h3>
+<pre><code>Console.init
+Console.log("Log")
+e = 12
+Console.var("e", binding)
+</code></pre>
+<p>Pour l'usage, merci de vous référer au manuel.</p>
+<h1 id="constantes">Constantes</h1>
+<h3 id="change_font">CHANGE_FONT</h3>
+<p>Si <code>true</code>, tente de modifier la police de la console pour Lucida Console au démarrage de celle-ci. Il est conseillé de laisser à true sauf si la commande ne fonctionne pas (cela peut arriver sur certaines versions de Windows, notamment d'anciennes versions).</p>
+<h3 id="use_unicode">USE_UNICODE</h3>
+<p>Si <code>true</code>, active le support unicode de la console (encodage UTF-8). </p>
+<p><em>(Pour rappel, l'UTF-8 est obligatoire pour afficher des caractères spéciaux, dont nos chers accents français.)</em></p>
+<h3 id="no_warnings">NO_WARNINGS</h3>
+<p>Si <code>true</code>, désactive l'affichage des warning et des log. Déconseillé lors du développement.</p>
+<h3 id="force_debug">FORCE_DEBUG</h3>
+<p>Si <code>true</code>, la console sera affichée également si le jeu est lancé en dehors de l'éditeur.</p>
+<h1 id="methodes">Méthodes</h1>
+<h3 id="selfcolorc">self.color(c)</h3>
+<p>Modifie la couleur du texte et du fond.</p>
+<p><code>int</code> c → code couleur (hexadécimal)</p>
+<pre><code>0x0000 # noir
+0x0001 # bleu foncé
+0x0002 # vert foncé
+0x0003 # cyan foncé
+0x0004 # rouge foncé
+0x0005 # rose foncé
+0x0006 # jaune foncé
+0x0007 # gris clair
+0x0008 # gris
+0x0009 # bleu
+0x000a # vert
+0x000b # cyan
+0x000c # rouge
+0x000d # rose
+0x000e # jaune
+0x000f # blanc
+</code></pre>
+<h3 id="selfdebugmsg-line-custom_caller">self.debug(msg, line, custom_caller)</h3>
+<p>Affiche un message de debug (coloration syntaxique).</p>
+<p><code>string</code> msg → message à afficher</p>
+<p><code>bool</code> line (<code>true</code> par défaut) → affiche la ligne où se situe le debug</p>
+<p><code>caller</code> custom_caller (<code>nil</code> par défaut) → caller spécifique pour la ligne du debug si jamais le debug se situe dans une autre fonction (laisser à nil pour automatique)</p>
+<h3 id="selfdebug_amsg-line-custom_caller">self.debug_a(msg, line, custom_caller)</h3>
+<p>Affiche un message de debug (coloration syntaxique).
+Version ASCII. N'utiliser que dans des cas très spécifiques.</p>
+<p><code>string</code> msg → message à afficher</p>
+<p><code>bool</code> line (<code>true</code> par défaut) → affiche la ligne où se situe le debug</p>
+<p><code>caller</code> custom_caller (<code>nil</code> par défaut) → caller spécifique pour la ligne du debug si jamais le debug se situe dans une autre fonction (laisser à nil pour automatique)</p>
+<h3 id="selfdebug_umsg-line-custom_caller">self.debug_u(msg, line, custom_caller)</h3>
+<p>Affiche un message de debug (coloration syntaxique).
+Version Unicode. N'utiliser que dans des cas très spécifiques.</p>
+<p><code>string</code> msg → message à afficher</p>
+<p><code>bool</code> line (<code>true</code> par défaut) → affiche la ligne où se situe le debug</p>
+<p><code>caller</code> custom_caller (<code>nil</code> par défaut) → caller spécifique pour la ligne du debug si jamais le debug se situe dans une autre fonction (laisser à nil pour automatique)</p>
+<h3 id="selfdone">self.done</h3>
+<p>Termine l'action en cours.</p>
+<h3 id="selferrormsg-line-custom_caller">self.error(msg, line, custom_caller)</h3>
+<p>Affiche une erreur.</p>
+<p><code>string</code> msg → message à afficher</p>
+<p><code>bool</code> line (<code>true</code> par défaut) → affiche la ligne où se situe l'erreur</p>
+<p><code>caller</code> custom_caller (<code>nil</code> par défaut) → caller spécifique pour la ligne de l'erreur si jamais l'erreur se situe dans une autre fonction (laisser à nil pour automatique)</p>
+<pre><code>def afficher_erreur
+    Console.error("ceci est une erreur", true, caller.first.split(":""))
+end
+
+afficher_erreur() # C'est cette ligne qui sera affichée grâce à l'argument custom_caller.
+</code></pre>
+<h3 id="selfinit">self.init</h3>
+<p>Initialise la console. Il est fortement déconseillé de lancer plusieurs consoles.
+La console doit être lancée avant tout le reste.</p>
+<h3 id="selflogmsg">self.log(msg)</h3>
+<p>Affiche un log. (console en mode test ou popup en mode jeu)</p>
+<p><code>string</code> msg → message à afficher</p>
+<h3 id="selfstepmsg">self.step(msg)</h3>
+<p>Affiche une action en cours.</p>
+<p><code>string</code> msg → message à afficher</p>
+<h3 id="selftitlemsg">self.title(msg)</h3>
+<p>Affiche un titre important.</p>
+<p><code>string</code> msg → message à afficher</p>
+<h3 id="selfunicodemsg">self.unicode(msg)</h3>
+<p>Affiche une chaîne de caractères unicode.</p>
+<p><code>string</code> msg → message à afficher</p>
+<h3 id="selfunicode_cc">self.unicode_c(c)</h3>
+<p>Affiche un caractère unicode</p>
+<p><code>string</code> c → caractère à afficher</p>
+<h3 id="selfvarvb">self.var(v,b)</h3>
+<p>Affiche les informations d'une variable.</p>
+<p><code>string</code> v → variable entre guillemets
+<code>binding</code> b → contexte de la variable</p>
+<pre><code>e = 12
+
+Console.var("e", binding) # Affiche le debug de la variable
+</code></pre>
+<h3 id="selfwarningmsg-line-custom_caller">self.warning(msg, line, custom_caller)</h3>
+<p>Affiche un avertissement.</p>
+<p><code>string</code> msg → message à afficher</p>
+<p><code>bool</code> line (<code>true</code> par défaut) → affiche la ligne où se situe l'avertissement</p>
+<p><code>caller</code> custom_caller (<code>nil</code> par défaut) → caller spécifique pour la ligne de l'avertissement si jamais l'avertissement se situe dans une autre fonction (laisser à nil pour automatique)</p>
+<pre><code>def afficher_avertissement
+    Console.warning("ceci est un avertissement", true, caller.first.split(":""))
+end
+
+afficher_avertissement() # C'est cette ligne qui sera affichée grâce à l'argument custom_caller.
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../conventions/" class="btn btn-neutral" title="Conventions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../conventions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>
